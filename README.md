@@ -1,2 +1,2 @@
 # node_backend
-Project to great RESTful backend using Node, Express and MongoDB
+Project to create a RESTful backend using Node, Express and MongoDB
