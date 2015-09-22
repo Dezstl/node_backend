@@ -1,15 +1,26 @@
 var User = require('../models/User');
 
+var _ = require('underscore');
 
-var getUsers = function (next) {
+var getUsers = function (params, next) {
 
-	User.find(function (err, users) {
-		if (err) {
-			return next(err);
-		}
-		next(null, users)
-	});
+	if (_.isEmpty(params)) {
 
+		User.find(function (err, users) {
+			if (err) {
+				return next(err);
+			}
+			next(null, users)
+		});
+	} else {
+		queryUsers(params, function (err, users) {
+			if (err) {
+				return next(err);
+			}
+			next(null, users)
+		});
+	}
+	
 }
 
 var createUser = function (user, next) {
@@ -54,7 +65,6 @@ var createUser = function (user, next) {
 			});
 		}
 	});
-
 }
 
 var updateUser = function (username, userData, next) {
@@ -82,14 +92,54 @@ var updateUser = function (username, userData, next) {
 			}
 			next(null, username + " has been updated.");
 		});
-
 	});
 }
+
+var deleteUser = function (username, next) {
+	User.remove({"username": username}, function(err) {
+		if (err) {
+			return next(err);
+		}
+		next(null, username + " has been removed");
+	});
+}
+
+var queryUsers = function(params, next) {
+
+	if (params.hasOwnProperty("status") && params != null) {
+
+		var active;
+		if (params.status == 'active') {
+			active = true;
+		} else if (params.status == 'inactive') {
+			active = false
+		} else {
+			return next("Entered invalid status value. Use 'active' or 'inactive'. ");
+		}
+
+		User.find({"active": active}, function(err, users) {
+			if (err) {
+				return next(err);
+			}
+
+			if (users) {
+				return next(null, users);
+			} else {
+				return next(null, "No User found with status " + status);
+			}
+		});
+	} else {
+		return next("Invalid params. Params are filter by 'staus' or order by 'city' ");
+	}
+	
+}
+
 
 
 module.exports = {
 	getUsers: getUsers,
     createUser: createUser,
-    updateUser: updateUser
+    updateUser: updateUser,
+    deleteUser: deleteUser
 }
 

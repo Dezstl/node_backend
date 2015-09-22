@@ -4,8 +4,9 @@ module.exports = function (app) {
 
 
 	app.get('/api/user', function(req, res) {
+		var params = req.query;
 
-		userService.getUsers(function(err, users) {
+		userService.getUsers(params, function(err, users) {
 			if (err) {
 				return res.json({message: err});
 			}
@@ -33,5 +34,16 @@ module.exports = function (app) {
 			res.json({message: msg});
 		});
 	});
+
+	app.delete('/api/user/delete/:username', function(req, res) {
+		var username = req.params.username;
+
+		userService.deleteUser(username, function(err, msg) {
+			if (err) {
+				return res.json({message: err});
+			}
+			res.json({message: msg});
+		});
+	})
 
 };
