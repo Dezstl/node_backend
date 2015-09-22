@@ -48,7 +48,7 @@ var createUser = function (user, next) {
 
 			newUser.save(function(err) {
 				if (err) {
-					next(err);
+					return next(err);
 				}
 				next(null, "User Created");
 			});
@@ -57,9 +57,39 @@ var createUser = function (user, next) {
 
 }
 
+var updateUser = function (username, userData, next) {
+	User.findOne({"username": username}, function(err, user) {
+		if (err) {
+			return next(user);
+		} 
+
+		if (userData.hasOwnProperty("firstName") && userData.firstName != null) {
+			user.firstName = userData.firstName;
+		}
+		if (userData.hasOwnProperty("secondName") && userData.secondName != null) {
+			user.secondName = userData.secondName;
+		}
+		if (userData.hasOwnProperty("city") && userData.city != null) {
+			user.city = userData.city;
+		}
+		if (userData.hasOwnProperty("active") && userData.active != null) {
+			user.active = userData.active;
+		}
+
+		user.save(function(err) {
+			if (err) {
+				return next(err);
+			}
+			next(null, username + " has been updated.");
+		});
+
+	});
+}
+
 
 module.exports = {
 	getUsers: getUsers,
-    createUser: createUser
+    createUser: createUser,
+    updateUser: updateUser
 }
 
