@@ -13,6 +13,7 @@ var getUsers = function (params, next) {
 			next(null, users)
 		});
 	} else {
+		
 		queryUsers(params, function (err, users) {
 			if (err) {
 				return next(err);
