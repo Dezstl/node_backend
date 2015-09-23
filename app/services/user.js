@@ -2,23 +2,38 @@ var User = require('../models/User');
 
 var _ = require('underscore');
 
+var groupByType = ['city', 'state', 'role', 'firstName', 'lastName'];
+
 var getUsers = function (params, next) {
+	var toGroup = false;
 
-	if (_.isEmpty(params)) {
+	if (params.hasOwnProperty("group")) {
+		if (params.group != null && _.contains(groupByType, params.group)) {
+			toGroup = true;
+		} else {
+			return next("Invalid status params");
+		}
+	}
 
-		User.find(function (err, users) {
+	if (params.hasOwnProperty("status")) {
+		// Return full list of users
+		var users = User.find(function (err, users) {
 			if (err) {
 				return next(err);
+			} else if (toGroup) {
+				return next(null, _.groupBy(users, params.group))
 			}
-			next(null, users)
+			next(null, users);
 		});
 	} else {
-		
-		queryUsers(params, function (err, users) {
+		// Return list filterd by active statusS
+	 	var users = queryUsers(params, function (err, users) {
 			if (err) {
 				return next(err);
+			} else if (toGroup) {
+				return next(null, _.groupBy(users, params.group))
 			}
-			next(null, users)
+			next(null, users);
 		});
 	}
 	
@@ -27,7 +42,7 @@ var getUsers = function (params, next) {
 var createUser = function (user, next) {
 	var errorMsg = ""
 
-	//Validaton
+	//Validation
 	if (!user.hasOwnProperty("username") || user.username == null ) {
 		errorMsg = "Username is required";
 	} else if (!user.hasOwnProperty("firstName") || user.firstName == null ) {
@@ -107,7 +122,7 @@ var deleteUser = function (username, next) {
 
 var queryUsers = function(params, next) {
 
-	if (params.hasOwnProperty("status") && params != null) {
+	if (params.status != null) {
 
 		var active;
 		if (params.status == 'active') {
@@ -123,14 +138,14 @@ var queryUsers = function(params, next) {
 				return next(err);
 			}
 
-			if (users) {
+			if (users != null && users.length > 0) {
 				return next(null, users);
 			} else {
-				return next(null, "No User found with status " + status);
+				return next(null, {message: "No Users found with status " + params.status});
 			}
 		});
 	} else {
-		return next("Invalid params. Params are filter by 'staus' or order by 'city' ");
+		return next("Invalid status params");
 	}
 	
 }
