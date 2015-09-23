@@ -7,6 +7,7 @@ var groupByType = ['city', 'state', 'role', 'firstName', 'lastName'];
 var getUsers = function (params, next) {
 	var toGroup = false;
 
+	// Check for groupby
 	if (params.hasOwnProperty("group")) {
 		if (params.group != null && _.contains(groupByType, params.group)) {
 			toGroup = true;
@@ -27,7 +28,7 @@ var getUsers = function (params, next) {
 		});
 	} else {
 		// Return list filterd by active statusS
-	 	var users = queryUsers(params, function (err, users) {
+	 	var users = queryUsersByStatus(params, function (err, users) {
 			if (err) {
 				return next(err);
 			} else if (toGroup) {
@@ -120,7 +121,7 @@ var deleteUser = function (username, next) {
 	});
 }
 
-var queryUsers = function(params, next) {
+var queryUsersByStatus = function(params, next) {
 
 	if (params.status != null) {
 
