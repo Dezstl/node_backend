@@ -3,7 +3,7 @@
 	"main": "server.js",
 	"dependencies": {
 		"express": "4.13.x",
-		"mongoose": "4.0.x",
+		"mongoose": "4.1.x",
 		"body-parser": "1.14.x",
 		"underscore": "1.8.x",
 		"bcrypt": "0.8.x"
