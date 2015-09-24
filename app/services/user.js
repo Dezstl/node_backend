@@ -16,7 +16,7 @@ var getUsers = function (params, next) {
 		}
 	}
 
-	if (params.hasOwnProperty("status")) {
+	if (!params.hasOwnProperty("status")) {
 		// Return full list of users
 		var users = User.find(function (err, users) {
 			if (err) {
@@ -37,7 +37,7 @@ var getUsers = function (params, next) {
 			next(null, users);
 		});
 	}
-	
+
 }
 
 var createUser = function (user, next) {
@@ -56,7 +56,7 @@ var createUser = function (user, next) {
 		errorMsg = "Active status is required";
 	} else if (!user.hasOwnProperty("password") || user.password == null ) {
 		errorMsg = "Password is required";
-	} 
+	}
 
 	if (errorMsg != "") {
 		return next(errorMsg, null);
@@ -88,7 +88,7 @@ var updateUser = function (username, userData, next) {
 	User.findOne({"username": username}, function(err, user) {
 		if (err) {
 			return next(user);
-		} 
+		}
 
 		if (userData.hasOwnProperty("firstName") && userData.firstName != null) {
 			user.firstName = userData.firstName;
@@ -148,7 +148,7 @@ var queryUsersByStatus = function(params, next) {
 	} else {
 		return next("Invalid status params");
 	}
-	
+
 }
 
 
