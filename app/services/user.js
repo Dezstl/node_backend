@@ -105,6 +105,15 @@ var updateUser = function (username, userData, next) {
 		if (userData.hasOwnProperty("active") && userData.active != null) {
 			user.active = userData.active;
 		}
+		if (userData.hasOwnProperty("password") && userData.password != null) {
+			user.password = userData.password;
+		}
+		if (userData.hasOwnProperty("jobTitle") && userData.jobTitle != null) {
+			user.jobTitle = userData.jobTitle;
+		}
+		if (userData.hasOwnProperty("state") && userData.state != null) {
+			user.state = userData.state;
+		}
 
 		user.save(function(err) {
 			if (err) {
