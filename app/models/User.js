@@ -15,7 +15,7 @@ var UserSchema = new Schema({
         password: {type: String, required: true}
 });
 
-var UserSchema.pre('save', function (next){
+UserSchema.pre('save', function (next){
 	var user = this;
 
 	// Check if password was changed
@@ -23,12 +23,18 @@ var UserSchema.pre('save', function (next){
 		return next();
 	}
 
-    bcrypt.hash(user.password, salt, function (err, hash) {
+    bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
         if (err) {
             return next(err);
         }
-        user.password = hash;
-        next();
+
+        bcrypt.hash(user.password, salt, function (err, hash) {
+            if (err) {
+                return next(err);
+            }
+            user.password = hash;
+            next();
+        });
     });
 });
 
@@ -37,7 +43,7 @@ UserSchema.methods.comparePassword = function (enteredPassword, next) {
         if (err) {
             return next(err);
         }
-        next(null, isMatch);S
+        next(null, isMatch);
     });
 };
 
