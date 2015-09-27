@@ -17,6 +17,23 @@ var getStatus = function (next) {
     next(status);
 }
 
+var lsPath = function(path, next) {
+    var files = [];
+    var pwd = shell.pwd();
+
+    if (path) {
+        files = shell.ls(path);
+    } else {
+        files = shell.ls();
+    }
+
+    if (files.length == 0) {
+       return next({messge: "Invalid Path"});
+    }
+    next(files);
+};
+
 module.exports = {
-    getStatus: getStatus
+    getStatus: getStatus,
+    lsPath: lsPath
 }
