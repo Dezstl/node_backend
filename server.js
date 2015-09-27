@@ -42,6 +42,7 @@ app.use('/api', router);
 require('./app/controllers/index')(app);
 require('./app/controllers/user')(app);
 require('./app/controllers/auth')(app);
+require('./app/controllers/environment')(app);
 
 
 //Start Server

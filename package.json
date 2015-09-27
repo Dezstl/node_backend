@@ -10,6 +10,7 @@
         "passport": "0.3.0",
         "passport-local": "1.0.x",
         "express-session": "1.11.x",
-        "node-uuid": "1.4.3"
+        "node-uuid": "1.4.3",
+        "shelljs": "0.5.x"
 	}
 }
