@@ -52,6 +52,8 @@ var createUser = function (user, next) {
 		errorMsg = "Last name is required";
 	} else if (!user.hasOwnProperty("city") || user.city == null ) {
 		errorMsg = "City is required";
+	} else if (!user.hasOwnProperty("state") || user.state == null) {
+		errorMsg = "State is required";
 	} else if (!user.hasOwnProperty("active") || user.active == null ) {
 		errorMsg = "Active status is required";
 	} else if (!user.hasOwnProperty("password") || user.password == null ) {
@@ -71,6 +73,7 @@ var createUser = function (user, next) {
 			newUser.firstName = user.firstName;
 			newUser.lastName = user.lastName;
 			newUser.city = user.city;
+			newUser.state = user.state;
 			newUser.active = user.active;
 			newUser.password = user.password;
 
@@ -101,6 +104,15 @@ var updateUser = function (username, userData, next) {
 		}
 		if (userData.hasOwnProperty("active") && userData.active != null) {
 			user.active = userData.active;
+		}
+		if (userData.hasOwnProperty("password") && userData.password != null) {
+			user.password = userData.password;
+		}
+		if (userData.hasOwnProperty("jobTitle") && userData.jobTitle != null) {
+			user.jobTitle = userData.jobTitle;
+		}
+		if (userData.hasOwnProperty("state") && userData.state != null) {
+			user.state = userData.state;
 		}
 
 		user.save(function(err) {
