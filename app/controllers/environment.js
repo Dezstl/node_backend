@@ -8,4 +8,12 @@ module.exports = function (app) {
             res.send(result);
         });
     });
+
+    app.get('/api/dir', function (req, res) {
+        var path = req.query.path;
+
+        enviromentService.lsPath(path, function(result) {
+            res.send(result);
+        });
+    });
 }
