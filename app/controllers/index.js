@@ -5,7 +5,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/api', function (req, res) {
-		res.json({message: "App is working!!!"});
+		res.json({message: "API IS UP"});
 	});
 
 };
