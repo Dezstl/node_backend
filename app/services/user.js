@@ -2,7 +2,7 @@ var User = require('../models/User');
 
 var _ = require('underscore');
 
-var groupByType = ['city', 'state', 'role', 'firstName', 'lastName'];
+var groupByType = ['city', 'state', 'jobTitle', 'firstName', 'lastName'];
 
 var getUsers = function (params, next) {
 	var toGroup = false;
@@ -90,14 +90,18 @@ var createUser = function (user, next) {
 var updateUser = function (username, userData, next) {
 	User.findOne({"username": username}, function(err, user) {
 		if (err) {
-			return next(user);
+			return next(err);
+		}
+
+		if (!user) {
+			return next("No User Found");
 		}
 
 		if (userData.hasOwnProperty("firstName") && userData.firstName != null) {
 			user.firstName = userData.firstName;
 		}
-		if (userData.hasOwnProperty("secondName") && userData.secondName != null) {
-			user.secondName = userData.secondName;
+		if (userData.hasOwnProperty("lastName") && userData.lastName != null) {
+			user.lastName = userData.lastName;
 		}
 		if (userData.hasOwnProperty("city") && userData.city != null) {
 			user.city = userData.city;
