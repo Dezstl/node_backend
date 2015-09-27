@@ -23,7 +23,7 @@ app.use(session({
   genid: function(req) {
     return guid.v4() // use UUIDs for session IDs
   },
-  secret: 'keyboard cat',
+  secret: 'proto x',
   resave: false,
   saveUninitialized: true
 }));

@@ -71,8 +71,13 @@ npm install
 echo "Done"
 
 # Add sample data
-#echo "Add sample MongoDB data"
-#/data/mongo/reset.sh
-#echo "Done"
+echo "Sample Data"
+file="/var/Import_Complete.txt"
+if [ ! -e "$file" ]; then
+    echo "Add sample MongoDB data"
+    tar xzf /vagrant/data/UserApi.tar.gz && mongorestore -h localhost -d UserApi --drop ./dump/UserApi
+    cat > /var/Import_Complete.txt
+fi
+echo "Done"
 
 
