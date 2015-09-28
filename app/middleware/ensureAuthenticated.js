@@ -15,7 +15,7 @@ module.exports = {
 
         } else {
 
-            return res.json({message: "Not Authenticated"});
+            return res.status(401).json({message: "Not Authenticated"});
         }
     }
 

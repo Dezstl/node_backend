@@ -8,7 +8,7 @@ module.exports = function (app) {
 
 		userService.getUsers(params, function(err, users) {
 			if (err) {
-				return res.json({message: err});
+				return res.status(400).json({message: err});
 			}
 			res.send(users);
 		});
@@ -18,7 +18,7 @@ module.exports = function (app) {
 
 		userService.createUser(req.body, function(err, msg) {
 			if (err) {
-				return res.json({message: err});
+				return res.status(400).json({message: err});
 			}
 			res.json({message: msg});
 		});
@@ -29,7 +29,7 @@ module.exports = function (app) {
 
 		userService.updateUser(username, req.body, function(err, msg) {
 			if (err) {
-				return res.json({message: err});
+				return res.status(400).json({message: err});
 			}
 			res.json({message: msg});
 		});
@@ -40,7 +40,7 @@ module.exports = function (app) {
 
 		userService.deleteUser(username, function(err, msg) {
 			if (err) {
-				return res.json({message: err});
+				return res.status(400).json({message: err});
 			}
 			res.json({message: msg});
 		});
