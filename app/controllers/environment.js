@@ -12,7 +12,10 @@ module.exports = function (app) {
     app.get('/api/dir', function (req, res) {
         var path = req.query.path;
 
-        enviromentService.lsPath(path, function(result) {
+        enviromentService.lsPath(path, function(err, result) {
+            if (err) {
+                return res.status(404).send(err);
+            }
             res.send(result);
         });
     });
