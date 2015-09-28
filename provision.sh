@@ -45,6 +45,7 @@ fi
 echo "Done"
 
 #firewall!
+echo "Disalbe firewall"
 service iptables stop
 chkconfig iptables off
 echo "Done"
@@ -59,9 +60,9 @@ fi
 echo "Done"
 
 # Install gems
-echo "Installing ruby-devel"
-yum install -y ruby-devel
-echo "Done"
+#echo "Installing ruby-devel"
+#yum install -y ruby-devel
+#echo "Done"
 
 
 # Install packages

@@ -13,8 +13,15 @@ Vagrant.configure(2) do |config|
     auto_correct: true
 
   config.vm.provider "virtualbox" do |v|
-    v.memory = 2048
-    v.cpus = 4
+    v.customize [ "guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000 ]
+    v.customize [
+            "modifyvm", :id,
+            "--ioapic", "on",
+            "--natdnsproxy1", "off",
+            "--natdnshostresolver1", "off",
+            "--memory", 2048,
+            "--cpus", 4
+        ]
   end
 
   config.vm.provision "shell", path: "provision.sh"
