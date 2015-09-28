@@ -1,0 +1,10 @@
+{
+    "versions": {
+        "Version 1": "/v1"
+    },
+    "port": 8080,
+    "mongoDB": {
+        "connectionString": "mongodb://localhost:27017/",
+        "dbName": "UserApi"
+    }
+}

@@ -1,5 +1,6 @@
 require('../../models/User');
 var userService = require('../../services/user');
+var config = require('../../../../../config');
 var should = require('should');
 var expect = require('chai').expect;
 var async = require('async');
@@ -12,7 +13,7 @@ mockgoose(mongoose);
 var User = mongoose.model('User');
 
 before(function (done) {
-    mongoose.connect('mongodb://localhost:27017/UserApi');
+    mongoose.connect('config.mongoDB.connectionString + config.mongoDB.dbName');
 
     //Create test users
     async.parallel([

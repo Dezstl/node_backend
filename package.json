@@ -1,5 +1,6 @@
 {
 	"name": "node_backend",
+    "version": "1.0.0",
 	"main": "server.js",
 	"dependencies": {
         "async": "1.4.x",
@@ -21,6 +22,6 @@
         "mockgoose": "4.0.x"
     },
     "scripts": {
-        "test": "./node_modules/.bin/mocha ./app/tests/**/*.js --reporter spec"
+        "test": "./node_modules/.bin/mocha ./app/routes/v1/tests/**/*.js --reporter spec"
     }
 }

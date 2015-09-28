@@ -23,7 +23,7 @@ describe("Enviroment Server", function () {
 
     describe("LS Path", function() {
         it("should return correct files", function () {
-            var path = "app/services"
+            var path = "app/routes"
             var files = shell.ls(path);
             enviromentService.lsPath(path, function (err, result) {
                 should.not.exist(err);

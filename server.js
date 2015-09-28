@@ -1,14 +1,12 @@
 //Setup Server
 var express = require('express');
-var session = require('express-session');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var guid = require('node-uuid');
-var passport = require('./app/modules/auth/passport')();
+var config = require('./config');
 
 
 //Connect to DB
-mongoose.connect('mongodb://localhost:27017/UserApi');
+mongoose.connect(config.mongoDB.connectionString + config.mongoDB.dbName);
 
 
 var app = express();
@@ -18,32 +16,24 @@ router = express.Router();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
-//Setup passport
-app.use(session({
-  genid: function(req) {
-    return guid.v4() // use UUIDs for session IDs
-  },
-  secret: 'proto x',
-  resave: false,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
 
 //Set port
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || config.port;
 
-// Middleware to ensure user is authenticated
-app.use(require('./app/middleware/ensureAuthenticated').ensureAuthenticated);
+var VERSIONS = config.versions;
 
 //Configure Routes
-app.use('/api', router);
+app.use('/', router);
 
-require('./app/controllers/index')(app);
-require('./app/controllers/user')(app);
-require('./app/controllers/auth')(app);
-require('./app/controllers/environment')(app);
+//Version paths
+for (var k in VERSIONS) {
+    app.use(VERSIONS[k], require('./app/routes' + VERSIONS[k]));
+}
 
+//Return the version paths
+app.get('/', function(req, res) {
+    res.json(VERSIONS);
+})
 
 //Start Server
 app.listen(port);
