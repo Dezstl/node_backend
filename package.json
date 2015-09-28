@@ -2,6 +2,7 @@
 	"name": "node_backend",
 	"main": "server.js",
 	"dependencies": {
+        "async": "1.4.x",
 		"express": "4.13.x",
 		"mongoose": "4.1.x",
 		"body-parser": "1.14.x",
@@ -12,5 +13,14 @@
         "express-session": "1.11.x",
         "node-uuid": "1.4.3",
         "shelljs": "0.5.x"
-	}
+	},
+    "devDependencies": {
+        "mocha": "2.3.x",
+        "chai": "3.3.x",
+        "should": "7.1.x",
+        "mockgoose": "4.0.x"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/mocha ./app/tests/**/*.js --reporter spec"
+    }
 }
