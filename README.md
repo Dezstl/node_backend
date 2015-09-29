@@ -1,4 +1,4 @@
-node_backend
+# node_backend
 Project to create a RESTful backend using Node, Express and MongoDB
 
 ## Setup
@@ -72,7 +72,7 @@ Success: {message: "sucess"), Code: 200
 Faiure: {unauthorized}, Code: 401
 ```
 
-## User
+### User
 ##### Get Users
 ```javascript
 GET /api/user?status={active||inactive}&group={firstName||secondName||jobTitle||city||state}
@@ -141,7 +141,7 @@ Success: { "message": "{username} has been removed" }
 Failure: { "message": "No User Found" } CODE: 400
 ```
 
-## ENVIROMENTS
+### ENVIROMENTS
 
 ##### Get Enviroment Status
 ```javascript
