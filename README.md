@@ -8,6 +8,7 @@ To deploy to local enviroment.
 Required tools
  - Virtualbox https://www.virtualbox.org/wiki/Downloads
  - Vagrant https://www.vagrantup.com/downloads.html
+
 #### Start Vagrant
 ```sh
 $ cd node_backend
