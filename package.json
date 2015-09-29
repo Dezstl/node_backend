@@ -19,7 +19,8 @@
         "mocha": "2.3.x",
         "chai": "3.3.x",
         "should": "7.1.x",
-        "mockgoose": "4.0.x"
+        "mockgoose": "4.0.x",
+        "supertest": "1.1.0"
     },
     "scripts": {
         "test": "./node_modules/.bin/mocha ./app/routes/v1/tests/**/*.js --reporter spec"
