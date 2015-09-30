@@ -7,7 +7,7 @@ Project to create a RESTful backend using Node, Express and MongoDB
 2. Ease of setup
    - Initial setup to get node, express and MongoDb up and running is quite simple.
 3. Dev community & open source
-   - There is no point in reinventing the wheel. The node.js community is greatly supported. I have used serval open source node modules in the project. 
+   - There is no point in reinventing the wheel. The node.js community is greatly supported. I have used several useful open source node modules in the project. 
 4. Ease in running from local vagrant environment
    - App can be ran from any OS/host machine. Just need to install virtual and vagrant (can be a bit more of hassle on windows -_- ).
 
