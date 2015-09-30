@@ -286,17 +286,17 @@ version 1: /v1/
 
 ### Base
 ```javscript
-GET '/'
+GET '/v1/'
 Response: {message: "API IS UP, Version {#}}, CODE: 200
 ```
 ```javscript
-GET '/api'
+GET '/v1/api'
 Response: {message: "API IS UP, Version {#}}, CODE: 200
 ```
 
 ### Auth
 ```javascript
-POST /api/auth
+POST /v1/api/auth
 Request: {username: "user", password: "abc"}
 Success: {message: "sucess"), Code: 200
 Faiure: {unauthorized}, Code: 401
@@ -305,7 +305,7 @@ Faiure: {unauthorized}, Code: 401
 ### User
 ##### Get Users
 ```javascript
-GET /api/user?status={active||inactive}&group={firstName||secondName||jobTitle||city||state}
+GET /v1/api/user?status={active||inactive}&group={firstName||secondName||jobTitle||city||state}
 Success no query: [
     {
         "_id": "560776b636afad41124e2655",
@@ -352,14 +352,14 @@ Failure: {"message": "Entered invalid status value. Use 'active' or 'inactive'. 
 ```
 ##### Create User
 ```javascript
-POST /api/user
+POST /v1/api/user
 REQUEST: { "username": "jsmith", "firstName": "john", "lastName": "smith", "jobTitle": "Engineer", "city": "New York", "state": "NY", "active": true, "password": "password1" }
 Success: { "message": "User Created" }, CODE: 200
 Failure: { "message": "{field} is required" }, { "message": "Username exist!" }, CODE: 400
 ```
 ##### Update User
 ```javascript
-PUT /api/user/:username
+PUT /v1/api/user/:username
 REQUEST: {"firstName": "john", "lastName": "smith", "jobTitle": "Engineer", "city": "New York", "state": "NY", "active": true, "password": "password1" } - none required
 Success: { "message": "{username} has been created" }, CODE: 200
 Failure: { "message": "No User Found" }, CODE: 400
@@ -375,7 +375,7 @@ Failure: { "message": "No User Found" }, CODE: 400
 
 ##### Get Enviroment Status
 ```javascript
-GET /api/status
+GET /v1/api/status
 RESPONSE: {
   "rubyVersion": "ruby 1.9.3p551 (2014-11-13 revision 48407) [x86_64-linux] ",
   "nodeVersion": "v0.10.40 ",
@@ -384,7 +384,7 @@ RESPONSE: {
 }, CODE: 200
 ```
 ```javascript
-GET /api/dir?path=
+GET /v1/api/dir?path=
 RESPONSE: [ "README.md", ..,  ..] , CODE: 200
 FAILURE: { "messge": "Invalid Path" }, CODE: 400
 ```
