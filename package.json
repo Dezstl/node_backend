@@ -4,22 +4,22 @@
 	"main": "server.js",
 	"dependencies": {
         "async": "1.4.x",
+        "bcrypt": "0.8.x",
+        "body-parser": "1.14.x",
 		"express": "4.13.x",
+        "express-session": "1.11.x",
 		"mongoose": "4.1.x",
-		"body-parser": "1.14.x",
-		"underscore": "1.8.x",
-		"bcrypt": "0.8.x",
+		"node-uuid": "1.4.3",
         "passport": "0.3.0",
         "passport-local": "1.0.x",
-        "express-session": "1.11.x",
-        "node-uuid": "1.4.3",
+		"underscore": "1.8.x",
         "shelljs": "0.5.x"
 	},
     "devDependencies": {
-        "mocha": "2.3.x",
         "chai": "3.3.x",
-        "should": "7.1.x",
+        "mocha": "2.3.x",
         "mockgoose": "4.0.x",
+        "should": "7.1.x",
         "supertest": "1.1.0"
     },
     "scripts": {
