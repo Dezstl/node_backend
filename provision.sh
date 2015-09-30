@@ -68,7 +68,7 @@ echo "Done"
 # Install packages
 echo "Installing npm"
 cd /vagrant/
-npm install
+sudo npm install --no-bin-links
 echo "Done"
 
 # Add sample data

@@ -23,6 +23,6 @@
         "supertest": "1.1.0"
     },
     "scripts": {
-        "test": "./node_modules/.bin/mocha ./app/routes/v1/tests/**/*.js --reporter spec"
+        "test": "./node_modules/mocha/bin/mocha ./app/routes/v1/tests/**/*.js --reporter spec"
     }
 }
