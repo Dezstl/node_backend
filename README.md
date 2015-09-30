@@ -48,7 +48,7 @@ $ npm test
 #### Run App (after vagrant ssh step)
 
 ```sh
-$ npm server.js
+$ node server.js
 ```
 #### Local Endpoint
 
@@ -398,6 +398,7 @@ FAILURE: { "messge": "Invalid Path" }, CODE: 400
 
 2. Expand REST testing
 
+3. Grunt
 
 ## Versioning
 
