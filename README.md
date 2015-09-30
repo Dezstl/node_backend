@@ -1,7 +1,7 @@
 # node_backend
 Project to create a RESTful backend using Node, Express and MongoDB
 
-## Reasons for choosing technologies (Node, Express, MongoDB)
+## Reasons for choosing technologies
 1. Familiarity
    - I have professional experience with JavaScript and in building apps using M.E.A.N stack
 2. Ease of setup
