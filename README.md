@@ -65,6 +65,9 @@ ex.
 ==> default: Fixed port collision for 8080 => 8000. Now on port 2200.
 ```
 
+## API ENDPOINTS
+version 1: /v1/
+
 > Need to authenticate first to use endpoints. Any user in the DB can be authenticated. Vagrant provisionig should populate DB with sample users.
 
 > User to authenticate with POST: '/v1/api/auth'
@@ -75,9 +78,6 @@ ex.
 }
 ```
 > all other sample user passwords are 'password'
-
-## API ENDPOINTS
-version 1: /v1/
 
 ### Base
 ```javscript
