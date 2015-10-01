@@ -1,11 +1,11 @@
 # node_backend
 Project to create a RESTful backend using Node, Express and MongoDB
 
-## Reasons for choosing technologies (Node, Express, MongoDB)
+## Reasons for choosing technologies
 1. Familiarity
    - I have professional experience with JavaScript and in building apps using M.E.A.N stack
 2. Ease of setup
-   - Initial setup to get node, express and MongoDb up and running is quite simple.
+   - Initial setup to get node, express and MongoDD up and running is quite simple.
 3. Dev community & open source
    - There is no point in reinventing the wheel. The node.js community is greatly supported. I have used serval open source node modules in the project. 
 4. Ease in running from local vagrant environment
@@ -19,6 +19,8 @@ To deploy to local enviroment.
 Required tools
  - Virtualbox https://www.virtualbox.org/wiki/Downloads
  - Vagrant https://www.vagrantup.com/downloads.html
+
+> Window 10 users might have to referr https://github.com/mitchellh/vagrant/issues/6068
 
 #### Start Vagrant
 ```sh
@@ -195,11 +197,11 @@ FAILURE: { "messge": "Invalid Path" }, CODE: 400
 
 ## Versioning
 
- - versioning is handle through express routes
+ - versioning is handled through express routes
  - starting with base '/v1'
- - new changes that break existing functionality in current version  will need a new version/route
+ - new changes that break existing functionality in current version will need a new version/route
  - controllers/services/middleware/test will be placed in a new route/folder '/v{n}'
- - new {verision}.js will be added to routes folder to handler routes and any needed middleware for the new version
+ - a new {verision}.js file will be added to routes folder to handle routes and any needed middleware for the new version
  - if any new feature require changes to database structure. Refactoring will be needed to decouple DB to allow each version to point to its own DB. 
  - Possible refactoring app to use restify https://github.com/restify/node-restify
 
