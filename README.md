@@ -20,7 +20,7 @@ Required tools
  - Virtualbox https://www.virtualbox.org/wiki/Downloads
  - Vagrant https://www.vagrantup.com/downloads.html
 
-> Window 10 users might have to referr https://github.com/mitchellh/vagrant/issues/6068
+> Window 10 users may have to refer https://github.com/mitchellh/vagrant/issues/6068
 
 #### Start Vagrant
 ```sh
