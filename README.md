@@ -50,7 +50,7 @@ $ npm test
 #### Run App (after vagrant ssh step)
 
 ```sh
-$ npm server.js
+$ node server.js
 ```
 #### Local Endpoint
 
