@@ -1,17 +1,6 @@
 # node_backend
 Project to create a RESTful backend using Node, Express and MongoDB
 
-## Reasons for choosing technologies
-1. Familiarity
-   - I have professional experience with JavaScript and in building apps using M.E.A.N stack
-2. Ease of setup
-   - Initial setup to get node, express and MongoDD up and running is quite simple.
-3. Dev community & open source
-   - There is no point in reinventing the wheel. The node.js community is greatly supported. I have used serval open source node modules in the project. 
-4. Ease in running from local vagrant environment
-   - App can be ran from any OS/host machine. Just need to install virtual and vagrant (can be a bit more of hassle on windows -_- ).
-
-
 ## Setup
 To deploy to local enviroment.
 
