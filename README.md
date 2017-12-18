@@ -1,6 +1,9 @@
 # node_backend
 Project to create a RESTful backend using Node, Express and MongoDB
 
+## RUN
+npm run start
+
 ## Test
 npm run test
 
