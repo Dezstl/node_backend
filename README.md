@@ -1,58 +1,11 @@
 # node_backend
 Project to create a RESTful backend using Node, Express and MongoDB
 
-## Setup
-To deploy to local enviroment.
+# RUN
+npm run start
 
-#### Download
-Required tools
- - Virtualbox https://www.virtualbox.org/wiki/Downloads
- - Vagrant https://www.vagrantup.com/downloads.html
-
-> Window 10 users may have to refer https://github.com/mitchellh/vagrant/issues/6068
-
-#### Start Vagrant
-```sh
-$ cd node_backend
-```
-```sh
-$ vagrant up
-```
-Initial run will take 15-30 minutes, depending on host system.
-
-If first run does not successfully install (ruby, mongodb, node.js, npm) run..
-```sh
-$ vagrant reload --provision
-```
-
-#### Vagrant ssh
-```sh
-$ vagrant ssh
-```
-```sh
-$ cd /vagrant
-```
-#### Run Test (after vagrant ssh step)
-```sh
-$ npm test
-```
-#### Run App (after vagrant ssh step)
-
-```sh
-$ node server.js
-```
-#### Local Endpoint
-
-```sh
-localhost:8000
-```
- - port may be different if there is a conflict
- - check vagrant up/reloaded logs for port mapping
-
-ex.
-```sh
-==> default: Fixed port collision for 8080 => 8000. Now on port 2200.
-```
+# Test
+npm run test
 
 ## API ENDPOINTS
 version 1: /v1/
