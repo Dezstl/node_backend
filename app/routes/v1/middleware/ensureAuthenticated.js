@@ -9,6 +9,8 @@ module.exports = {
             '/api/auth'
         ];
 
+        return next();
+        /*
         //Check if user is logged in or allowed unauthenticated path
         if (req.isAuthenticated() || _(anonymousPaths).contains(req.path)) {
             return next();
@@ -16,7 +18,7 @@ module.exports = {
         } else {
 
             return res.status(401).json({message: "Not Authenticated"});
-        }
+        } */
     }
 
 }
