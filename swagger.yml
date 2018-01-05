@@ -1,0 +1,159 @@
+swagger: '2.0'
+info:
+  description: Manageges User Information
+  version: 1.0.0
+  title: User Service
+  contact:
+    email: dezstl86@yahoo.com
+host: localhost:8080
+basePath: /v1/api
+schemes:
+  - http
+paths:
+  /auth:
+    post:
+      tags:
+        - Authorization
+      summary: Authorize User
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/AuthRequest'
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: unauthorized
+  /user:
+    get:
+      tags:
+        - Users
+      summary: Get Users
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: status
+          in: query
+          description: active || inactive
+          type: string
+        - name: group
+          in: query
+          description: firstName || secondName || jobTitle||city || state
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AlternateDatesAvailableContainerResponse'
+        '405':
+          description: Invalid input
+  /atp/container/alternateLocations:
+    post:
+      tags:
+        - Container
+      summary: Check Alternate Locations
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/AvailableContainerRequest'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AlternateLocationsAvailableContainerResponse'
+        '405':
+          description: Invalid input
+definitions:
+  AuthRequest:
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+  AvailableContainerRequest:
+    type: object
+    properties:
+      custermerType:
+        type: string
+      containerSize:
+        type: integer
+      containerType:
+        type: string
+      numRequested:
+        type: integer
+      date:
+        type: string
+        format: date
+      originMarket:
+        type: string
+      postalCode:
+        type: number
+      storageType:
+        type: string
+  AlternateDatesAvailableContainerResponse:
+    type: object
+    properties:
+      location:
+        type: string
+      dates:
+        type: array
+        items:
+          $ref: '#/definitions/AvailableDates'
+  AlternateLocationsAvailableContainerResponse:
+    type: object
+    properties:
+      date:
+        type: string
+        format: date
+      locations:
+        type: array
+        items:
+          $ref: '#/definitions/AvailableLocations'
+  ContainerResponse:
+    type: object
+    properties:
+      numberOfContainers:
+        type: integer
+      location:
+        type: string
+      date:
+        type: string
+        format: date
+      alternatedates:
+        type: array
+        items:
+          $ref: '#/definitions/AvailableDates'
+  AvailableDates:
+    type: object
+    properties:
+      date:
+        type: string
+        format: date
+      numberOfContainers:
+        type: integer
+  AvailableLocations:
+    type: object
+    properties:
+      location:
+        type: string
+        format: date
+      numberOfContainers:
+        type: integer
