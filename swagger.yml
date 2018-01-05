@@ -31,7 +31,7 @@ paths:
           description: Success
         '401':
           description: unauthorized
-  /user:
+  /users:
     get:
       tags:
         - Users
@@ -54,14 +54,14 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/AlternateDatesAvailableContainerResponse'
+            $ref: '#/definitions/GetUsersResponse'
         '405':
           description: Invalid input
-  /atp/container/alternateLocations:
+  /user:
     post:
       tags:
-        - Container
-      summary: Check Alternate Locations
+        - User
+      summary: Create A User
       description: ''
       consumes:
         - application/json
@@ -72,14 +72,16 @@ paths:
           name: body
           required: true
           schema:
-            $ref: '#/definitions/AvailableContainerRequest'
+            $ref: '#/definitions/CreateUserRequest'
       responses:
         '200':
-          description: Success
+          description: Success User Created
           schema:
-            $ref: '#/definitions/AlternateLocationsAvailableContainerResponse'
-        '405':
+            $ref: '#/definitions/MessageResponse'
+        '400':
           description: Invalid input
+          schema:
+            $ref: '#/definitions/MessageResponse'
 definitions:
   AuthRequest:
     type: object
@@ -88,72 +90,29 @@ definitions:
         type: string
       password:
         type: string
-  AvailableContainerRequest:
+  GetUsersResponse:
+    type: object
+  CreateUserRequest:
     type: object
     properties:
-      custermerType:
+      usermane:
         type: string
-      containerSize:
-        type: integer
-      containerType:
+      firstName:
         type: string
-      numRequested:
-        type: integer
-      date:
+      lastName:
         type: string
-        format: date
-      originMarket:
+      jobTitle:
         type: string
-      postalCode:
-        type: number
-      storageType:
+      city:
         type: string
-  AlternateDatesAvailableContainerResponse:
+      state:
+        type: string
+      active:
+        type: boolean
+      password:
+        type: string
+  MessageResponse:
     type: object
     properties:
-      location:
+      message:
         type: string
-      dates:
-        type: array
-        items:
-          $ref: '#/definitions/AvailableDates'
-  AlternateLocationsAvailableContainerResponse:
-    type: object
-    properties:
-      date:
-        type: string
-        format: date
-      locations:
-        type: array
-        items:
-          $ref: '#/definitions/AvailableLocations'
-  ContainerResponse:
-    type: object
-    properties:
-      numberOfContainers:
-        type: integer
-      location:
-        type: string
-      date:
-        type: string
-        format: date
-      alternatedates:
-        type: array
-        items:
-          $ref: '#/definitions/AvailableDates'
-  AvailableDates:
-    type: object
-    properties:
-      date:
-        type: string
-        format: date
-      numberOfContainers:
-        type: integer
-  AvailableLocations:
-    type: object
-    properties:
-      location:
-        type: string
-        format: date
-      numberOfContainers:
-        type: integer
