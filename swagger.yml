@@ -111,6 +111,7 @@ paths:
       parameters:
         - name: username
           in: path
+          required: true
         - in: body
           name: body
           required: true
@@ -135,8 +136,9 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: userId
+        - name: username
           in: path
+          required: true
       responses:
         '200':
           description: Success User Deleted
