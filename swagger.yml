@@ -78,7 +78,7 @@ paths:
     post:
       tags:
         - User
-      summary: Update A User
+      summary: Create A User
       description: ''
       consumes:
         - application/json
@@ -102,7 +102,7 @@ paths:
     put:
       tags:
         - User
-      summary: Create A User
+      summary: Update A User
       description: ''
       consumes:
         - application/json
@@ -118,7 +118,7 @@ paths:
             $ref: '#/definitions/CreateUserRequest'
       responses:
         '200':
-          description: Success User Created
+          description: Success User Updated
           schema:
             $ref: '#/definitions/MessageResponse'
         '400':
@@ -128,7 +128,7 @@ paths:
     delete:
       tags:
         - User
-      summary: Create A User
+      summary: Delete A User
       description: ''
       consumes:
         - application/json
