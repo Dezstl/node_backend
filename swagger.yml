@@ -10,6 +10,23 @@ basePath: /v1/api
 schemes:
   - http
 paths:
+  /:
+    get:
+      tags:
+        - Base
+      summary: Base User
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/MessageResponse''
+        '404':
+          description: Not Found
   /auth:
     post:
       tags:
