@@ -3,7 +3,7 @@ userService = require('../services/user');
 module.exports = function (app) {
 
 
-	app.get('/api/user', function(req, res) {
+	app.get('/api/users', function(req, res) {
 		var params = req.query;
 
 		userService.getUsers(params, function(err, users) {

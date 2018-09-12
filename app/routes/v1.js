@@ -4,6 +4,8 @@ var session = require('express-session');
 var app = module.exports = express();
 var guid = require('node-uuid');
 var passport = require('./v1/modules/auth/passport')();
+var swaggerUi = require('swagger-ui-express');
+var swaggerDocument = require('../../swagger.json');
 
 //Setup passport
 app.use(session({
@@ -19,6 +21,8 @@ app.use(passport.session());
 
 // Middleware to ensure user is authenticated
 app.use(require('./v1/middleware/ensureAuthenticated').ensureAuthenticated);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 require('./v1/controllers/index')(app);
 require('./v1/controllers/user')(app);
