@@ -1,4 +1,4 @@
-userService = require('../services/user');
+var userService = require('../services/user');
 
 module.exports = function (app) {
 
