@@ -2,7 +2,7 @@
 var express = require('express');
 var session = require('express-session');
 var app = module.exports = express();
-var guid = require('node-uuid');
+var guid = require('uuid/v1');
 var passport = require('./v1/modules/auth/passport')();
 var swaggerUi = require('swagger-ui-express');
 var swaggerDocument = require('../../swagger.json');
@@ -10,7 +10,7 @@ var swaggerDocument = require('../../swagger.json');
 //Setup passport
 app.use(session({
   genid: function(req) {
-    return guid.v4() // use UUIDs for session IDs
+    return guid() // use UUIDs for session IDs
   },
   secret: 'proto x',
   resave: false,

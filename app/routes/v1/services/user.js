@@ -18,7 +18,7 @@ var getUsers = function (params, next) {
 
 	if (!params.hasOwnProperty("status")) {
 		// Return full list of users
-		var users = User.find(function (err, users) {
+		User.find(function (err, users) {
 			if (err) {
 				return next(err);
 			} else if (toGroup) {
@@ -28,7 +28,7 @@ var getUsers = function (params, next) {
 		});
 	} else {
 		// Return list filterd by active statusS
-	 	var users = queryUsersByStatus(params, function (err, users) {
+	 	queryUsersByStatus(params, function (err, users) {
 			if (err) {
 				return next(err);
 			} else if (toGroup) {
@@ -47,7 +47,7 @@ var createUser = function (user, next) {
 	if (!user.hasOwnProperty("username") || user.username == null ) {
 		errorMsg = "Username is required";
 	} else if (!user.hasOwnProperty("firstName") || user.firstName == null ) {
-		erroMsg = "First name is required";
+		errorMsg = "First name is required";
 	} else if (!user.hasOwnProperty("lastName") || user.lastName == null ) {
 		errorMsg = "Last name is required";
 	} else if (!user.hasOwnProperty("city") || user.city == null ) {

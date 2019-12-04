@@ -6,11 +6,14 @@ var config = require('./config');
 
 
 //Connect to DB
-mongoose.connect(config.mongoDB.connectionString + config.mongoDB.dbName);
+mongoose.connect((config.mongoDB.connectionString + config.mongoDB.dbName), {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 
 var app = express();
-router = express.Router();
+const router = express.Router();
 
 //Configure body parser
 app.use(bodyParser.urlencoded({ extended: true}));
