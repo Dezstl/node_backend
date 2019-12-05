@@ -6,7 +6,8 @@ var config = require('./config');
 
 
 //Connect to DB
-mongoose.connect((config.mongoDB.connectionString + config.mongoDB.dbName), {
+var connectionString = process.env.DATABASE_CONNECTION_STRING || config.mongoDB.connectionString;
+mongoose.connect((connectionString + config.mongoDB.dbName), {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
