@@ -14,7 +14,7 @@
         "passport-local": "1.0.x",
         "shelljs": "0.5.x",
         "swagger-ui-express": "^4.0.1",
-        "underscore": "1.9.1",
+        "underscore": "1.12.1",
         "underscore.string": "^3.3.5",
         "uuid": "3.3.3"
     },
