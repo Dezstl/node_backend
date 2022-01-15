@@ -12,7 +12,7 @@
         "mongoose": "5.7.13",
         "passport": "0.3.0",
         "passport-local": "1.0.x",
-        "shelljs": "0.5.x",
+        "shelljs": "0.8.x",
         "swagger-ui-express": "^4.0.1",
         "underscore": "1.12.1",
         "underscore.string": "^3.3.5",
